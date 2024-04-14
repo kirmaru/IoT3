@@ -1,5 +1,5 @@
 
-function DoorStatus(){ //doors
+function DoorStatus(){ 
     &.ajax({
     type: 'GET',
     url: '/doors',
