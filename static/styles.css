@@ -1,0 +1,38 @@
+body {
+    font-family: Blackout, sans-serif;
+    background-color: #FFA500;
+    margin: 0;
+    padding: 0;
+}
+
+#monitoring_data {
+    width: 60%;
+    margin: 120px auto;
+    padding: 60px;
+    background-color: #fff;
+    border-radius: 50px;
+    box-shadow: 0 2px 4px rgba(128,128,128, 128);
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 80%;
+    padding: 7px;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #808080;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffa500 ;
+}

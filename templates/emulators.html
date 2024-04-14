@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Monitoring System</title>
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="/static/index.js"></script>
+</head>
+<body>
+<div id="monitoring_data">
+
+
+<label>Двери</label><br>
+    <input type="text" id="door_status" placeholder="Значение для яркости">
+    <button onclick="DoorStatus()">Открыть</button><br>
+
+<label>Свет</label><br>
+    <input type="text" id="lum" placeholder="Значение для яркости">
+    <button onclick="Lighting()">Включить</button><br>
+
+<label>Климат</label><br>
+    <input type="text" id="climate" placeholder="Значение температуры">
+    <button onclick="Climate()">Отправить</button><br>
+
+
+<!--    <label>Система умного гаража</label><br>
+    <input type="text" id="password_state" placeholder="Новый пароль">
+    <button onclick="GaragePassword()">Отправить</button><br>-->
+</div>
+</body>
+</html>
