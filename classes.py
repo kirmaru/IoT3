@@ -22,7 +22,7 @@ class lighting(Thing):
         super().connect()
         self.emulate()
         print('Connection with '+self.name+' success, new value is ' +str(self.lum))
-
+        #print(f'Great success: {self.lum}')
     def emulate(self):
         self.lum = random.randint(15, 25)
         return json.dumps({"lights_state": self.lum})

@@ -1,6 +1,32 @@
 
+function Lighting(){
+    $.ajax({
+    type: 'GET',
+    url: '/light',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: {},
+    success: function(response){
+        document.getElementById("lum").value = response["lum"]
+    }
+    })
+}
+
+function Climate(){
+    $.ajax({
+    type: 'GET',
+    url: '/climate',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: {},
+    success: function(response){
+        document.getElementById("climate").value = response["climate"]
+    }
+    })
+}
+
 function DoorStatus(){ 
-    &.ajax({
+    $.ajax({
     type: 'GET',
     url: '/doors',
     dataType: 'json',
@@ -12,18 +38,6 @@ function DoorStatus(){
     })
 }
 
-function Climate(){
-    &.ajax({
-    type: 'GET',
-    url: '/climate',
-    dataType: 'json',
-    contentType: 'application/json',
-    data: {},
-    success: function(response){
-        document.getElementById("climate").value = response["climate"]
-    }
-    })
-}
 
 /*
 function GaragePassword(){
@@ -40,16 +54,5 @@ function GaragePassword(){
 }
 */
 
-function Lighting(){
-    &.ajax({
-    type: 'GET',
-    url: '/light',
-    dataType: 'json',
-    contentType: 'application/json',
-    data: {},
-    success: function(response){
-        document.getElementById("lum").value = response["lum"]
-    }
-    })
-}
+
 
