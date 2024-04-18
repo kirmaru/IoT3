@@ -12,7 +12,7 @@ intruder = classes.Intruder_Sensor("intruder")
 
 @app.route('/light')
 def connect_light():
-    return light.connect("lights")
+    return json.dump({light.connect("lights")})
 
 
 @app.route('/climate')
