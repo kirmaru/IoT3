@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import classes
-
+import json
 
 app = Flask(__name__)
 light = classes.lighting("lights")
@@ -17,21 +17,21 @@ def connect_light():
 
 @app.route('/climate')
 def ChangeTemp():
-    return temp.connect("climate")
+    return json.dump({temp.connect("climate")})
 
 @app.route('/doors')
 def connect_Doors():
-    return doors.connect("doors")
+    return json.dump({doors.connect("doors")})
 @app.route('/alarm')
 def connect_Alarm():
-    return alarm.connect("alarm")
+    return json.dump({alarm.connect("alarm")})
 
 @app.route('/fire')
 def connect_Fire():
-    return fire.connect("fire")
+    return json.dump({fire.connect("fire")})
 @app.route('/intruder')
 def connect_Intruder():
-    return intruder.connect("intruder")
+    return json.dump({intruder.connect("intruder")})
 
 
 @app.route('/')
