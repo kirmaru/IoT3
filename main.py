@@ -3,8 +3,8 @@ import classes
 import json
 
 app = Flask(__name__)
-light = classes.lighting("lights")
-temp = classes.Climate_Control("climate")
+lights = classes.lighting("lights")
+climate = classes.Climate_Control("climate")
 doors = classes.Garage_Doors("doors")
 alarm = classes.Alarm_system("alarm")
 fire = classes.Fire_Sensor("fire")
@@ -12,23 +12,23 @@ intruder = classes.Intruder_Sensor("intruder")
 
 @app.route('/light')
 def connect_light():
-    return json.dump({light.connect("lights")})
+    return json.dump({lights.connect("lights")})
 
 
 @app.route('/climate')
 def ChangeTemp():
-    return json.dump({temp.connect("climate")})
+    return json.dumps({climate.connect("climate")})
 
 @app.route('/doors')
 def connect_Doors():
-    return json.dump({doors.connect("doors")})
+    return json.dumps({doors.connect("doors")})
 @app.route('/alarm')
 def connect_Alarm():
-    return json.dump({alarm.connect("alarm")})
+    return json.dumps({alarm.connect("alarm")})
 
 @app.route('/fire')
 def connect_Fire():
-    return json.dump({fire.connect("fire")})
+    return json.dumps({fire.connect("fire")})
 @app.route('/intruder')
 def connect_Intruder():
     return json.dump({intruder.connect("intruder")})
