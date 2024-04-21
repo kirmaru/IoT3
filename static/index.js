@@ -21,15 +21,17 @@ function Climate(){
     dataType: 'json',
     contentType: 'application/json',
     data: {
-        "value": document.getElementById("climate").value
+        "humid": document.getElementById("humid").value,
+        "temp": document.getElementById("temp").value
     },
     success: function(response){
-        document.getElementById("climate").value = response
+        document.getElementById("humid").value = response.humid;
+        document.getElementById("temp").value = response.temp;
     }
     })
 }
 
-function DoorStatus(){ 
+function DoorStatus(){
     $.ajax({
     type: 'GET',
     url: '/doors',
@@ -59,6 +61,3 @@ function GaragePassword(){
     })
 }
 */
-
-
-
