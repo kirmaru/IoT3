@@ -41,7 +41,7 @@ class Climate_Control(Thing):
     def autoClimate(self):
         return "autoClimate<br />"
 
-    def connect(self, source):
+    def connect(self, request):
         super().connect()
         self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' +str(self.temp)+', ' +str(self.humid))
@@ -59,7 +59,7 @@ class Garage_Doors(Thing):
 
     def closeDoor(self):
         return "closeDoor<br />"
-    def connect(self, source):
+    def connect(self, request):
         super().connect()
         self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
@@ -101,7 +101,7 @@ class Alarm_system(Thing):
     def enableAlarm(self):
         return f"{self.status} enable alarm"
 
-    def connect(self, source):
+    def connect(self, request):
         super().connect()
         self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
@@ -117,7 +117,7 @@ class Fire_Sensor(Thing):
     def disable(self):
         return f"{self.status} disable<br />"
 
-    def connect(self, source):
+    def connect(self, request):
         super().connect()
         self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
@@ -133,7 +133,7 @@ class Intruder_Sensor(Thing):
     def disable(self):
         return f"{self.status} disable<br />"
 
-    def connect(self, source):
+    def connect(self, request):
         super().connect()
         self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
