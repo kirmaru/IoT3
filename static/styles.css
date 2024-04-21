@@ -18,6 +18,8 @@ label {
     font-weight: bold;
 }
 
+
+
 input {
     width: 80%;
     padding: 7px;
@@ -26,7 +28,7 @@ input {
 
 button {
     padding: 5px 10px;
-    background-color: #808080;
+    background-color: #808081;
     color: #fff;
     border: none;
     border-radius: 5px;
