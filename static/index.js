@@ -5,7 +5,9 @@ function Lighting(){
     url: '/light',
     dataType: 'json',
     contentType: 'application/json',
-    data: {},
+    data: {
+        "value": document.getElementById("value").value,
+    },
     success: function(response){
         document.getElementById("lum").value = response["lum"]
     }
@@ -18,7 +20,9 @@ function Climate(){
     url: '/climate',
     dataType: 'json',
     contentType: 'application/json',
-    data: {},
+    data: {
+        "value": document.getElementById("value").value,
+    },
     success: function(response){
         document.getElementById("climate").value = response["climate"]
     }
@@ -31,7 +35,9 @@ function DoorStatus(){
     url: '/doors',
     dataType: 'json',
     contentType: 'application/json',
-    data: {},
+    data: {
+        "value": document.getElementById("value").value,
+    },
     success: function(response){
         document.getElementById("door_status").value = response["door_status"]
     }
