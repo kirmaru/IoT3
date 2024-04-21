@@ -29,7 +29,7 @@ def connect_Alarm():
 
 @app.route('/fire')
 def connect_Fire():
-    return json.dumps({fire.connect("fire"))
+    return json.dumps(fire.connect("fire"))
 @app.route('/intruder')
 def connect_Intruder():
     return json.dump({intruder.connect("intruder")})

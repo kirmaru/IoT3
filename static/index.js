@@ -34,9 +34,13 @@ function DoorStatus(){
     data: {
         "value": document.getElementById("door_status").value
     },
-    success: function(response){
-        document.getElementById("doors").value = response["doors"]
-    }
+    success: function(response) {
+            if (response.length > 0) {
+                document.getElementById("doors").value = response;
+            } else {
+                document.getElementById("doors").value = "No doors connected";
+            }
+        }
     })
 }
 
