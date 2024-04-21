@@ -63,7 +63,7 @@ class Garage_Doors(Thing):
     def connect(self, source):
         super().connect()
         self.value = request.args.get('value', '')
-        print('Connection with '+self.name+' success, new value is ' + str(self.status))
+        print('Connection with '+self.name+' success, new value is ' + str(self.value))
     # def emulate(self):
     #     self.status = random.randint(15, 25)
     #     return json.dumps({"Doors_state": self.status})
