@@ -31,9 +31,11 @@ function DoorStatus(){
     url: '/doors',
     dataType: 'json',
     contentType: 'application/json',
-    data: {},
+    data: {
+        "value": document.getElementById("door_status").value
+    },
     success: function(response){
-        document.getElementById("door_status").value = response["door_status"]
+        document.getElementById("doors").value = response["doors"]
     }
     })
 }

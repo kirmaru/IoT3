@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import classes
 import json
 
@@ -21,14 +21,15 @@ def ChangeTemp():
 
 @app.route('/doors')
 def connect_Doors():
-    return json.dumps({doors.connect("doors")})
+    doors.connect(request)
+    return json.dumps(doors.connect("doors"))
 @app.route('/alarm')
 def connect_Alarm():
-    return json.dumps({alarm.connect("alarm")})
+    return json.dumps(alarm.connect("alarm"))
 
 @app.route('/fire')
 def connect_Fire():
-    return json.dumps({fire.connect("fire")})
+    return json.dumps({fire.connect("fire"))
 @app.route('/intruder')
 def connect_Intruder():
     return json.dump({intruder.connect("intruder")})

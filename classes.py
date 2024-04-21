@@ -1,3 +1,4 @@
+from flask import request
 import abc
 import json
 import random
@@ -23,9 +24,9 @@ class lighting(Thing):
         self.emulate()
         print('Connection with '+self.name+' success, new value is ' +str(self.lum))
         #print(f'Great success: {self.lum}')
-    def emulate(self):
-        self.lum = random.randint(15, 25)
-        return json.dumps({"lights_state": self.lum})
+    # def emulate(self):
+    #     self.lum = random.randint(15, 25)
+    #     return json.dumps({"lights_state": self.lum})
 class Climate_Control(Thing):
     def __init__(self, name, humid = 0, temp = 0):
         super().__init__(name)
@@ -45,10 +46,10 @@ class Climate_Control(Thing):
         super().connect()
         self.emulate()
         print('Connection with '+self.name+' success, new value is ' +str(self.temp)+', ' +str(self.humid))
-    def emulate(self):
-        self.temp = random.randint(15, 25)
-        self.humid = random.randint(15, 25)
-        return json.dumps({'temp': self.temp, 'humid': self.humid})
+    # def emulate(self):
+    #     self.temp = random.randint(15, 25)
+    #     self.humid = random.randint(15, 25)
+    #     return json.dumps({'temp': self.temp, 'humid': self.humid})
 class Garage_Doors(Thing):
     def __init__(self, name, status = 0):
         super().__init__(name)
@@ -61,11 +62,11 @@ class Garage_Doors(Thing):
         return "closeDoor<br />"
     def connect(self, source):
         super().connect()
-        self.emulate()
+        self.value = request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
-    def emulate(self):
-        self.status = random.randint(15, 25)
-        return json.dumps({"Doors_state": self.status})
+    # def emulate(self):
+    #     self.status = random.randint(15, 25)
+    #     return json.dumps({"Doors_state": self.status})
 
 
 class Smart_Garage:
@@ -105,9 +106,9 @@ class Alarm_system(Thing):
         super().connect()
         self.emulate()
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
-    def emulate(self):
-        self.status = random.randint(15, 25)
-        return json.dumps({"Alarm_state": self.status})
+    # def emulate(self):
+    #     self.status = random.randint(15, 25)
+    #     return json.dumps({"Alarm_state": self.status})
 
 class Fire_Sensor(Thing):
     def __init__(self, name, status = 0):
@@ -121,9 +122,9 @@ class Fire_Sensor(Thing):
         super().connect()
         self.emulate()
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
-    def emulate(self):
-        self.status = random.randint(15, 25)
-        return json.dumps({"Alarm_state": self.status})
+    # def emulate(self):
+    #     self.status = random.randint(15, 25)
+    #     return json.dumps({"Alarm_state": self.status})
 
 class Intruder_Sensor(Thing):
     def __init__(self, name, status = 0):
@@ -137,6 +138,6 @@ class Intruder_Sensor(Thing):
         super().connect()
         self.emulate()
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
-    def emulate(self):
-        self.status = random.randint(15, 25)
-        return json.dumps({"Alarm_state": self.status})
+    # def emulate(self):
+    #     self.status = random.randint(15, 25)
+    #     return json.dumps({"Alarm_state": self.status})
