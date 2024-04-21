@@ -20,7 +20,7 @@ class lighting(Thing):
         return "autoLighting<br />"
     def connect(self, source):
         super().connect()
-        self.emulate()
+        self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' +str(self.lum))
         #print(f'Great success: {self.lum}')
     def emulate(self):
@@ -43,7 +43,7 @@ class Climate_Control(Thing):
 
     def connect(self, source):
         super().connect()
-        self.emulate()
+        self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' +str(self.temp)+', ' +str(self.humid))
     def emulate(self):
         self.temp = random.randint(15, 25)
@@ -61,7 +61,7 @@ class Garage_Doors(Thing):
         return "closeDoor<br />"
     def connect(self, source):
         super().connect()
-        self.emulate()
+        self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
     def emulate(self):
         self.status = random.randint(15, 25)
@@ -103,7 +103,7 @@ class Alarm_system(Thing):
 
     def connect(self, source):
         super().connect()
-        self.emulate()
+        self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
     def emulate(self):
         self.status = random.randint(15, 25)
@@ -119,7 +119,7 @@ class Fire_Sensor(Thing):
 
     def connect(self, source):
         super().connect()
-        self.emulate()
+        self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
     def emulate(self):
         self.status = random.randint(15, 25)
@@ -135,7 +135,7 @@ class Intruder_Sensor(Thing):
 
     def connect(self, source):
         super().connect()
-        self.emulate()
+        self.request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.status))
     def emulate(self):
         self.status = random.randint(15, 25)
