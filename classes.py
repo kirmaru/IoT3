@@ -21,8 +21,8 @@ class lighting(Thing):
         return "autoLighting<br />"
     def connect(self, source):
         super().connect()
-        self.emulate()
-        print('Connection with '+self.name+' success, new value is ' +str(self.lum))
+        self.value = request.args.get('value', '')
+        print('Connection with '+self.name+' success, new value is ' +str(self.value))
         #print(f'Great success: {self.lum}')
     # def emulate(self):
     #     self.lum = random.randint(15, 25)
@@ -44,7 +44,7 @@ class Climate_Control(Thing):
 
     def connect(self, source):
         super().connect()
-        self.emulate()
+        self.value = request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' +str(self.temp)+', ' +str(self.humid))
     # def emulate(self):
     #     self.temp = random.randint(15, 25)
@@ -104,8 +104,8 @@ class Alarm_system(Thing):
 
     def connect(self, source):
         super().connect()
-        self.emulate()
-        print('Connection with '+self.name+' success, new value is ' + str(self.status))
+        self.value = request.args.get('value', '')
+        print('Connection with '+self.name+' success, new value is ' + str(self.value))
     # def emulate(self):
     #     self.status = random.randint(15, 25)
     #     return json.dumps({"Alarm_state": self.status})
@@ -120,8 +120,8 @@ class Fire_Sensor(Thing):
 
     def connect(self, source):
         super().connect()
-        self.emulate()
-        print('Connection with '+self.name+' success, new value is ' + str(self.status))
+        self.value = request.args.get('value', '')
+        print('Connection with '+self.name+' success, new value is ' + str(self.value))
     # def emulate(self):
     #     self.status = random.randint(15, 25)
     #     return json.dumps({"Alarm_state": self.status})
@@ -136,8 +136,8 @@ class Intruder_Sensor(Thing):
 
     def connect(self, source):
         super().connect()
-        self.emulate()
-        print('Connection with '+self.name+' success, new value is ' + str(self.status))
+        self.value = request.args.get('value', '')
+        print('Connection with '+self.name+' success, new value is ' + str(self.value))
     # def emulate(self):
     #     self.status = random.randint(15, 25)
     #     return json.dumps({"Alarm_state": self.status})

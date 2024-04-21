@@ -5,9 +5,11 @@ function Lighting(){
     url: '/light',
     dataType: 'json',
     contentType: 'application/json',
-    data: {},
+    data: {
+        "value": document.getElementById("lum").value
+    },
     success: function(response){
-        document.getElementById("lum").value = response["lum"]
+        document.getElementById("lum").value = response
     }
     })
 }
@@ -18,9 +20,11 @@ function Climate(){
     url: '/climate',
     dataType: 'json',
     contentType: 'application/json',
-    data: {},
+    data: {
+        "value": document.getElementById("climate").value
+    },
     success: function(response){
-        document.getElementById("climate").value = response["climate"]
+        document.getElementById("climate").value = response
     }
     })
 }
@@ -35,11 +39,7 @@ function DoorStatus(){
         "value": document.getElementById("door_status").value
     },
     success: function(response) {
-            if (response.length > 0) {
-                document.getElementById("doors").value = response;
-            } else {
-                document.getElementById("doors").value = "No doors connected";
-            }
+            document.getElementById("doors").value = response;
         }
     })
 }
