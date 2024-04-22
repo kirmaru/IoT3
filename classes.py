@@ -21,8 +21,12 @@ class lighting(Thing):
         return "autoLighting<br />"
     def connect(self, source):
         super().connect()
-        self.value = request.args.get('value', '')
-        print('Connection with '+self.name+' success, new value is ' +str(self.value))
+        try:
+            float(request.args.get('value', ''))
+            self.value = request.args.get('value', '')
+            print('Connection with '+self.name+' success, new value is ' +str(self.value))
+        except ValueError:
+            print('Error: float type requested')
         #print(f'Great success: {self.lum}')
     # def emulate(self):
     #     self.lum = random.randint(15, 25)
@@ -44,9 +48,14 @@ class Climate_Control(Thing):
 
     def connect(self, source):
         super().connect()
-        self.temp = request.args.get('temp', '')
-        self.humid = request.args.get('humid', '')
-        print('Connection with '+self.name+' success, new value is ' +str(self.temp)+', ' +str(self.humid))
+        try:
+            float(request.args.get('temp', ''))
+            float(request.args.get('humid', ''))
+            self.temp = request.args.get('temp', '')
+            self.humid = request.args.get('humid', '')
+            print('Connection with '+self.name+' success, new value is ' +str(self.temp)+', ' +str(self.humid))
+        except ValueError:
+            print('Error: float type requested')
     # def emulate(self):
     #     self.temp = random.randint(15, 25)
     #     self.humid = random.randint(15, 25)
@@ -63,8 +72,12 @@ class Garage_Doors(Thing):
         return "closeDoor<br />"
     def connect(self, source):
         super().connect()
-        self.value = request.args.get('value', '')
-        print('Connection with '+self.name+' success, new value is ' + str(self.value))
+        try:
+            int(request.args.get('value', ''))
+            self.value = request.args.get('value', '')
+            print('Connection with '+self.name+' success, new value is ' + str(self.value))
+        except ValueError:
+            print('Error: integer is requested')
     # def emulate(self):
     #     self.status = random.randint(15, 25)
     #     return json.dumps({"Doors_state": self.status})
