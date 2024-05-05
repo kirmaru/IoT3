@@ -33,6 +33,7 @@ class Climate_Control(Thing):
         self.humid = humid
         self.temp = temp
 
+
     def setTemp(self):
         return "setTemp<br />"
 
@@ -40,6 +41,7 @@ class Climate_Control(Thing):
         return "setHumid<br />"
 
     def autoClimate(self):
+
         return "autoClimate<br />"
 
     def connect(self, source):
@@ -126,6 +128,19 @@ class Fire_Sensor(Thing):
     # def emulate(self):
     #     self.status = random.randint(15, 25)
     #     return json.dumps({"Alarm_state": self.status})
+
+class add_lights(Thing):
+    def __init__(self, name):
+        super().__init__(name)
+        self.power = 'Off'
+        self.switch_on_lum = 259
+
+    def connect(self):
+        super().connect()
+        return {"more_lights_powa": self.power}
+    def auto_power(self, lum):
+        self.power = 'On' if lum < self.switch_on_lum else 'Off'
+
 
 class Intruder_Sensor(Thing):
     def __init__(self, name, status = 0):
