@@ -71,8 +71,7 @@ function Lighting(){
             "value": document.getElementById("lum").value
         },
         success: function(response){
-            document.getElementById("lum").value = response
-            updateLightCondition(response, document.getElementById("lum").value)
+            document.getElementById("light_condition").value = response["light_condition"]
         }
     });
 }

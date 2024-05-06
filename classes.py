@@ -15,6 +15,8 @@ class lighting(Thing):
     def __init__(self, name, lum = 0):
         super().__init__(name)
         self.lum = lum
+        self.power = 'Off'
+        self.switch_on_lum = 300
     def setLighting(self):
         return "setLighting<br />"
     def autoLighting(self):
@@ -23,6 +25,7 @@ class lighting(Thing):
         super().connect()
         self.value = request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' +str(self.value))
+
         #print(f'Great success: {self.lum}')
     # def emulate(self):
     #     self.lum = random.randint(15, 25)
