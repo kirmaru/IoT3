@@ -61,20 +61,22 @@ function GaragePassword(){
     })
 }
 */
-function Lighting(){
+function Lighting() {
     $.ajax({
         type: 'GET',
         url: '/light',
         dataType: 'json',
         contentType: 'application/json',
         data: {
-            "value": document.getElementById("lum").value
+            "value": document.getElementById("lum").value,
+            "light_condition": document.getElementById("light_condition").value
         },
-        success: function(response){
-            document.getElementById("light_condition").value = response["light_condition"]
+        success: function(response) {
+            document.getElementById("light_condition").value = response["light_condition"];
         }
     });
 }
+
 
 function updateLightCondition(response, lum){
     $.ajax({
