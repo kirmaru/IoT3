@@ -27,7 +27,7 @@ class lighting(Thing):
         super().connect()
         self.value = request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' +str(self.value))
-        return
+        return self.power
         #print(f'Great success: {self.lum}')
     # def emulate(self):
     #     self.lum = random.randint(15, 25)
