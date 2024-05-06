@@ -21,11 +21,13 @@ class lighting(Thing):
         return "setLighting<br />"
     def autoLighting(self):
         return "autoLighting<br />"
+    def auto_power(self, lum):
+        self.power = 'On' if lum < self.switch_on_lum else 'Off'
     def connect(self, source):
         super().connect()
         self.value = request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' +str(self.value))
-
+        return
         #print(f'Great success: {self.lum}')
     # def emulate(self):
     #     self.lum = random.randint(15, 25)
@@ -70,6 +72,7 @@ class Garage_Doors(Thing):
         super().connect()
         self.value = request.args.get('value', '')
         print('Connection with '+self.name+' success, new value is ' + str(self.value))
+
     # def emulate(self):
     #     self.status = random.randint(15, 25)
     #     return json.dumps({"Doors_state": self.status})
