@@ -53,15 +53,14 @@ function Lighting() {
         dataType: 'json',
         contentType: 'application/json',
         data: {
-            "value": document.getElementById("lum").value,
-            "light_condition": document.getElementById("light_condition").value
+            "value": document.getElementById("lum").value
         },
         success: function(response) {
             document.getElementById("lum").value = response["lum"];
+            document.getElementById("power").innerText = response["power"] || "Undefined";
         }
     });
 }
-
 
 function updateLightCondition(response, lum){
     $.ajax({

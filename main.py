@@ -13,11 +13,9 @@ intruder = classes.Intruder_Sensor("intruder")
 
 @app.route('/light')
 def connect_light():
-    print("BlyaTY")
-    lights.auto_power()
     print(lights.lum)
-
     print(lights.power)
+    lights.update_power()  # Вызываем метод для обновления значения self.power
     return json.dumps(lights.connect("lights"))
 
 

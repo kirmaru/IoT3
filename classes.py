@@ -23,13 +23,15 @@ class lighting(Thing):
     #     return "autoLighting<br />"
     def auto_power(self):
         self.power = 'On' if self.lum < self.switch_on_lum else 'Off'
+
+    def update_power(self):
+        self.power = 'On' if self.lum < self.switch_on_lum else 'Off'
     def connect(self, source):
         super().connect()
         self.value = request.args.get('value', '')
-        print('Connection with '+self.name+' success, new value ' +str(self.value))
-        # print(self.power)
-        return json.dumps({"lum": self.value})
-
+        self.auto_power()  # Вызываем метод для установки состояния power
+        print('Connection with ' + self.name + ' success, new value ' + str(self.value))
+        return json.dumps({"lum": self.value, "power": self.power})  # Возвращаем JSON с состоянием power
         #print(f'Great success: {self.lum}')
     # def emulate(self):
     #     self.lum = random.randint(15, 25)
