@@ -32,21 +32,6 @@ function DoorStatus(){
     })
 }
 
-function Automate_lights(){
-    $.ajax({
-    type: 'GET',
-    url: '/doors',
-    dataType: 'json',
-    contentType: 'application/json',
-    data: {
-        "status": document.getElementById("lights_state").value
-    },
-    success: function(response) {
-            document.getElementById("lights_state").value = response;
-        }
-    })
-}
-
 /*
 function GaragePassword(){
     &.ajax({
@@ -72,7 +57,7 @@ function Lighting() {
             "light_condition": document.getElementById("light_condition").value
         },
         success: function(response) {
-            document.getElementById("light_condition").value = response["light_condition"];
+            document.getElementById("lum").value = response["lum"];
         }
     });
 }

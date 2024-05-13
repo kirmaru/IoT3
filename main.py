@@ -9,11 +9,15 @@ doors = classes.Garage_Doors("doors")
 alarm = classes.Alarm_system("alarm")
 fire = classes.Fire_Sensor("fire")
 intruder = classes.Intruder_Sensor("intruder")
-addLights = classes.add_lights("addLights")
+
 
 @app.route('/light')
 def connect_light():
-    addLights.auto_power(lights.lum)
+    print("BlyaTY")
+    lights.auto_power()
+    print(lights.lum)
+
+    print(lights.power)
     return json.dumps(lights.connect("lights"))
 
 

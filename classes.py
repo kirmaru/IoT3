@@ -15,19 +15,20 @@ class lighting(Thing):
     def __init__(self, name, lum = 0):
         super().__init__(name)
         self.lum = lum
-        self.power = 'Off'
+        self.power = 'Offf'
         self.switch_on_lum = 300
-    def setLighting(self):
-        return "setLighting<br />"
-    def autoLighting(self):
-        return "autoLighting<br />"
+    # def setLighting(self):
+    #     return "setLighting<br />"
+    # def autoLighting(self):
+    #     return "autoLighting<br />"
     def auto_power(self):
         self.power = 'On' if self.lum < self.switch_on_lum else 'Off'
     def connect(self, source):
         super().connect()
         self.value = request.args.get('value', '')
-        print('Connection with '+self.name+' success, new value is ' +str(self.value))
-        return json.dumps({"light_condition": self.power})
+        print('Connection with '+self.name+' success, new value ' +str(self.value))
+        # print(self.power)
+        return json.dumps({"lum": self.value})
 
         #print(f'Great success: {self.lum}')
     # def emulate(self):
