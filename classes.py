@@ -12,25 +12,34 @@ class Thing(abc.ABC):
         print("CONNECTION")
 
 class lighting(Thing):
-    def __init__(self, name, lum = 0):
+    def __init__(self, name, lum=0):
         super().__init__(name)
         self.lum = lum
+        self.power = "Off"
+
     def setLighting(self):
         return "setLighting<br />"
+
     def autoLighting(self):
         return "autoLighting<br />"
+
+    def update_power(self):
+        if self.lum < 300:
+            self.power = "On"
+        else:
+            self.power = "Off"
+
     def connect(self, source):
         super().connect()
         try:
             float(request.args.get('value', ''))
-            self.value = request.args.get('value', '')
-            print('Connection with '+self.name+' success, new value is ' +str(self.value))
+            self.lum = float(request.args.get('value', ''))
+            self.update_power()
+            print('Connection with ' + self.name + ' success, new value is ' + str(self.lum))
+            return {"power": self.power, "lum": self.lum}  # Return power and lum as dictionary
         except ValueError:
             print('Error: float type requested')
-        #print(f'Great success: {self.lum}')
-    # def emulate(self):
-    #     self.lum = random.randint(15, 25)
-    #     return json.dumps({"lights_state": self.lum})
+            return {"error": "float type requested"}  # Return error if conversion fails
 class Climate_Control(Thing):
     def __init__(self, name, humid = 0, temp = 0):
         super().__init__(name)

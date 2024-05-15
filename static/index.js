@@ -9,11 +9,11 @@ function Lighting(){
         "value": document.getElementById("lum").value
     },
     success: function(response){
-        document.getElementById("lum").value = response
+        document.getElementById("lum").value = response.lum; // Update lum value
+        document.getElementById("power").value = response.power; // Update power value
     }
     })
 }
-
 function Climate(){
     $.ajax({
     type: 'GET',
