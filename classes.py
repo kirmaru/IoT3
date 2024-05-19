@@ -6,6 +6,7 @@ import pymongo
 import datetime
 import numpy
 
+
 # class Logger:
 #     def __init__(self, db_name):
 #         self.client = pymongo.MongoClient('mongodb://localhost:27017/')
@@ -56,6 +57,14 @@ class lighting(Thing):
         self.client = pymongo.MongoClient('mongodb://localhost:27017/')
         self.db = self.client['IOT_logger_db']
 
+    def lum_chart(self):
+        cursor = self.db['LightingLogs2'].find()
+        lum_data = []
+        time_data = []
+        for elem in cursor:
+            lum_data.append(elem['lum'])
+            time_data.append(elem['timestamp'])
+        return {'lum_data': lum_data, 'time_data': time_data}
     def update_power(self):
         if self.lum < 300:
             self.power = "On"
@@ -91,6 +100,7 @@ class lighting(Thing):
             return max(lum_data)
         else:
             return 0
+
     def connect(self, source):
         super().connect()
         try:

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Smart Monitoring System</title>
 <link rel="stylesheet" type="text/css" href="/static/styles.css">
+<script src="https://unpkg.com/chart.js@3.5.0/dist/chart.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="/static/index.js"></script>
 </head>
@@ -29,7 +30,8 @@
 <label>Обработка данных</label><br>
         <input type="text" id="avg_lum" placeholder="Средняя освещенность">
         <input type="text" id="max_lum" placeholder="Максимальная освещенность">
-
+<canvas class="chart"></canvas>
+    <button onclick="create_chart()">Построить график</button>
 </div>
 </body>
 </html>

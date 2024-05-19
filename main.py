@@ -35,6 +35,10 @@ def connect_Fire():
 def connect_Intruder():
     return json.dump({intruder.connect("intruder")})
 
+@app.route('/get_chart', methods=['GET'])
+def get_chart():
+    data = lights.lum_chart()
+    return json.dumps(data)
 
 @app.route('/')
 def main():

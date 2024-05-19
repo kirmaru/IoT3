@@ -48,6 +48,116 @@ function DoorStatus(){
     })
 }
 
+function create_chart() {
+    $.ajax({
+        type: 'GET',
+        url: '/get_chart',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: {},
+        success: function(response) {
+            new Chart(
+                document.querySelector('.chart'), {
+                    type: 'line',
+                    data: {
+                        labels: response['time_data'],
+                        datasets: [{
+                            label: "Освещенность",
+                            data: response['lum_data'],
+                            cubicInterpolationMode: 'monotone',
+                            borderColor: 'rgba(54, 162, 235, 1)', // Синий цвет линии
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)', // Прозрачный синий цвет фона под линией
+                            borderWidth: 4, // Толщина линии
+                            pointBackgroundColor: 'rgba(54, 162, 235, 1)', // Цвет точек
+                            pointBorderColor: '#fff', // Цвет границ точек
+                            pointHoverBackgroundColor: '#fff', // Цвет точек при наведении
+                            pointHoverBorderColor: 'rgba(54, 162, 235, 1)' // Цвет границ точек при наведении
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    font: {
+                                        size: 16,
+                                        family: 'Arial',
+                                        style: 'italic',
+                                        weight: 'bold'
+                                    },
+                                    color: '#333'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'График освещенности',
+                                font: {
+                                    size: 24,
+                                    family: 'Arial',
+                                    style: 'normal',
+                                    weight: 'bold'
+                                },
+                                color: '#333'
+                            }
+                        },
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
+                                    display: true,
+                                    text: 'Время',
+                                    font: {
+                                        size: 18,
+                                        family: 'Arial',
+                                        style: 'normal',
+                                        weight: 'bold'
+                                    },
+                                    color: '#333'
+                                },
+                                ticks: {
+                                    color: '#333',
+                                    font: {
+                                        size: 14
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    color: 'rgba(200, 200, 200, 0.2)'
+                                }
+                            },
+                            y: {
+                                display: true,
+                                title: {
+                                    display: true,
+                                    text: 'Освещенность (люкс)',
+                                    font: {
+                                        size: 18,
+                                        family: 'Arial',
+                                        style: 'normal',
+                                        weight: 'bold'
+                                    },
+                                    color: '#333'
+                                },
+                                ticks: {
+                                    color: '#333',
+                                    font: {
+                                        size: 14
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    color: 'rgba(200, 200, 200, 0.2)'
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+        }
+    });
+}
+
 
 /*
 function GaragePassword(){
