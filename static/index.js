@@ -62,23 +62,25 @@ function create_chart() {
                     data: {
                         labels: response['time_data'],
                         datasets: [{
-                            label: "Освещенность",
+                            label: 'Освещенность',
                             data: response['lum_data'],
                             cubicInterpolationMode: 'monotone',
-                            borderColor: 'rgba(54, 162, 235, 1)', // Синий цвет линии
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)', // Прозрачный синий цвет фона под линией
-                            borderWidth: 4, // Толщина линии
-                            pointBackgroundColor: 'rgba(54, 162, 235, 1)', // Цвет точек
-                            pointBorderColor: '#fff', // Цвет границ точек
-                            pointHoverBackgroundColor: '#fff', // Цвет точек при наведении
-                            pointHoverBorderColor: 'rgba(54, 162, 235, 1)' // Цвет границ точек при наведении
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderWidth: 4,
+                            pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(54, 162, 235, 1)',
+                            pointRadius: 7,
+                            pointHoverRadius: 10
                         }]
                     },
                     options: {
                         responsive: true,
                         plugins: {
                             legend: {
-                                position: 'top',
+                                position: 'bottom',
                                 labels: {
                                     font: {
                                         size: 16,
@@ -158,18 +160,3 @@ function create_chart() {
     });
 }
 
-
-/*
-function GaragePassword(){
-    &.ajax({
-        type: 'GET',
-        url: '/PasswordInput',
-        dataType: 'json',
-        contentType: 'application/json',
-        data: {},
-        success: function(response){
-        document.getElementById("value").value = response["value"]
-        }
-    })
-}
-*/
