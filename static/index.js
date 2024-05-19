@@ -1,18 +1,20 @@
 
 function Lighting(){
     $.ajax({
-    type: 'GET',
-    url: '/light',
-    dataType: 'json',
-    contentType: 'application/json',
-    data: {
-        "value": document.getElementById("lum").value
-    },
-    success: function(response){
-        document.getElementById("lum").value = response.lum; // Update lum value
-        document.getElementById("power").value = response.power; // Update power value
-    }
-    })
+        type: 'GET',
+        url: '/light',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: {
+            "value": document.getElementById("lum").value
+        },
+        success: function(response){
+            document.getElementById("lum").value = response.lum; // Update lum value
+            document.getElementById("power").value = response.power; // Update power value
+            document.getElementById("avg_lum").value = response.avg_lum; // Update average lum value
+            document.getElementById("max_lum").value = response.max_lum; // Update maximum lum value
+        }
+    });
 }
 function Climate(){
     $.ajax({
