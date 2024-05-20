@@ -6,37 +6,6 @@ import pymongo
 import datetime
 import numpy
 
-
-# class Logger:
-#     def __init__(self, db_name):
-#         self.client = pymongo.MongoClient('mongodb://localhost:27017/')
-#         self.db = self.client[db_name]
-#
-#     def log_lighting(self, data):
-#         self.db['LightingLogs'].insert_one({
-#             'timestamp': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-#             'data': data
-#         })
-#
-#     def log_error(self, error_message):
-#         self.db['ErrorLogs'].insert_one({
-#             'timestamp': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-#             'error': error_message
-#         })
-#     def avg_lum(self):
-#         cursor = self.db['lum'].find()
-#         lum_data = []
-#         for elem in cursor:
-#             lum_data.append(elem['lum'])
-#         return round(numpy.mean(lum_data), 1)
-#
-#     def max_lum(self):
-#         cursor = self.db['lum'].find()
-#         lum_data = []
-#         for elem in cursor:
-#             lum_data.append(elem['lum'])
-#         return max(numpy.mean(lum_data))
-
 class Thing(abc.ABC):
     def __init__(self, name):
         self.name = name
@@ -71,10 +40,11 @@ class lighting(Thing):
         else:
             self.power = "Off"
 
-    def log_lighting(self, lum):
+    def log_lighting(self, lum, power):
         self.db['LightingLogs2'].insert_one({
             'timestamp': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            'lum': lum  # Сохраняем только значение lum
+            'lum': lum,
+            'power': power
         })
 
     def log_error(self, error_message):
@@ -86,7 +56,7 @@ class lighting(Thing):
     def avg_lum(self):
         cursor = self.db['LightingLogs2'].find()
         lum_data = [elem['lum'] for elem in cursor]
-        print("lum_data:", lum_data)  # Добавляем отладочное сообщение
+        print("lum_data:", lum_data)
         if lum_data:
             return round(numpy.mean(lum_data), 1)
         else:
@@ -107,7 +77,7 @@ class lighting(Thing):
             value = int(request.args.get('value', ''))
             self.lum = value
             self.update_power()
-            self.log_lighting(self.lum)
+            self.log_lighting(self.lum, self.power)
             self.max = self.max_lum()
             self.avg = self.avg_lum()
 
